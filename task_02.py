@@ -1,17 +1,28 @@
 import re
 
+
 def generator_numbers(text: str):
-    # find numbers in text
+    """
+    Finds numbers in text and returns them as a generator.
+
+    :param text: string with numbers
+    :return: generator that yield numbers
+    """
     all_numbers = re.findall(r'\d+\.\d+', text)
-    # generator that yeild next value
     for item in all_numbers:
         yield item
 
 def sum_profit(text: str, function: callable):
+    """
+    Calculates the total profit from the text using the given function.
+
+    :param text: string to analyze
+    :param function: function that generates numbers from text
+    :return: total profit
+    """
     summa = 0
     generator = function(text)
 
-    # loop with addition next value 
     while True:
         try:
             value = next(generator)
